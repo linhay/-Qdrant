@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
+        "version" : "5.7.1"
+      }
+    },
+    {
+      "identity" : "stjson",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/linhay/STJSON",
+      "state" : {
+        "revision" : "077f74d4fae94ea9a57ae36acea7cb8ea1ccab12",
+        "version" : "1.0.4"
+      }
+    }
+  ],
+  "version" : 2
+}
