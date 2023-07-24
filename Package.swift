@@ -5,16 +5,23 @@ import PackageDescription
 
 let package = Package(
     name: "Qdrant",
-    platforms: [.macOS(.v13)],
     products: [
         .library(name: "Qdrant", targets: ["Qdrant"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.7.1")),
-        .package(url: "https://github.com/linhay/STJSON", .upToNextMajor(from: "1.0.4")),
+        .package(url: "https://github.com/apple/swift-http-types.git", .upToNextMajor(from: "0.2.0")),
+        .package(url: "https://github.com/Flight-School/AnyCodable", .upToNextMajor(from: "0.6.7"))
     ],
     targets: [
-        .target(name: "Qdrant", dependencies: ["STJSON"]),
-        .testTarget(name: "QdrantTests", dependencies: ["Qdrant", "Alamofire"]),
+        .target(name: "Qdrant",
+                dependencies: [
+                    "AnyCodable",
+                    .product(name: "HTTPTypes", package: "swift-http-types")
+                ]),
+        .testTarget(name: "QdrantTests",
+                    dependencies: [
+                        "Qdrant",
+                        .product(name: "HTTPTypesFoundation", package: "swift-http-types")
+                    ]),
     ]
 )
