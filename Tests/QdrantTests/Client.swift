@@ -11,7 +11,7 @@ import HTTPTypesFoundation
 import Qdrant
 
 @available(macOS 13.0, *)
-struct Client: QTClient {
+struct Client: QdrantClient {
     
     var request: HTTPTypes.HTTPRequest {
         var request = HTTPRequest(url: URL(string: "http://localhost:6333")!)

@@ -10,12 +10,12 @@ import HTTPTypes
 
 public struct QdrantPoints {
     
-    public let client: QTClient
+    public let client: QdrantClient
     public let collection: String
     public let vectors: QdrantPointsVectors
     public let payload: QdrantPointsPayload
     
-    public init(client: QTClient, collection: String) {
+    public init(client: QdrantClient, collection: String) {
         self.client = client
         self.collection = collection
         vectors = .init(client: client, collection: collection)

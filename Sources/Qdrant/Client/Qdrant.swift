@@ -7,13 +7,18 @@
 
 import Foundation
 
-public class Qdrant {
+public struct Qdrant {
     
-    public let client: QTClient
-    public private(set) lazy var collections = QdrantCollections(client: client)
+    public let client: QdrantClient
+    public let collections: QdrantCollections
     
-    public init(client: QTClient) {
+    public init(client: QdrantClient) {
         self.client = client
+        self.collections = .init(client: client)
+    }
+    
+    public func points(collection: String) -> QdrantPoints {
+        .init(client: client, collection: collection)
     }
     
 }

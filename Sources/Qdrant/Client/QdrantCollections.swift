@@ -10,9 +10,9 @@ import HTTPTypes
 
 public struct QdrantCollections {
     
-    public let client: QTClient
+    public let client: QdrantClient
     
-    public init(client: QTClient) {
+    public init(client: QdrantClient) {
         self.client = client
     }
     

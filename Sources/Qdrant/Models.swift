@@ -459,15 +459,15 @@ public struct Record: Codable {
 public typealias Payload = [String: AnyCodable]
 
 public enum VectorStruct: Codable {
-    case array([Decimal])
-    case object([String: [Decimal]])
+    case array([Double])
+    case object([String: [Double]])
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         
-        if let array = try? container.decode([Decimal].self) {
+        if let array = try? container.decode([Double].self) {
             self = .array(array)
-        } else if let object = try? container.decode([String: [Decimal]].self) {
+        } else if let object = try? container.decode([String: [Double]].self) {
             self = .object(object)
         } else {
             throw DecodingError.typeMismatch(Self.self,
@@ -519,7 +519,7 @@ public struct SearchRequest: Codable {
 public struct NamedVectorStruct: Codable {
     
     public enum VectorType: Codable {
-        case array([Decimal])
+        case array([Double])
         case named(NamedVector)
     }
     
@@ -529,7 +529,7 @@ public struct NamedVectorStruct: Codable {
         case vector
     }
     
-    public init(_ vector: [Decimal]) {
+    public init(_ vector: [Double]) {
         self.vector = .array(vector)
     }
     
@@ -538,7 +538,7 @@ public struct NamedVectorStruct: Codable {
     }
     
     public init(from decoder: Decoder) throws {
-        if let array = try? decoder.singleValueContainer().decode([Decimal].self) {
+        if let array = try? decoder.singleValueContainer().decode([Double].self) {
             vector = .array(array)
             return
         }
@@ -821,11 +821,11 @@ public struct QuantizationSearchParams: Codable {
 }
 
 public struct ScoredPoint: Codable {
-    let id: ExtendedPointId
-    let version: UInt64
-    let score: Float
-    let payload: Payload?
-    let vector: VectorStruct?
+    public let id: ExtendedPointId
+    public let version: UInt64
+    public let score: Float
+    public let payload: Payload?
+    public let vector: VectorStruct?
 }
 
 public struct UpdateResult: Codable {
@@ -1159,7 +1159,7 @@ public struct PointStruct: Codable {
     }
     
     public init(id: Int,
-                vector: [Decimal],
+                vector: [Double],
                 payload: Payload? = nil) {
         self.init(id: .integer(UInt64(id)), vector: .array(vector), payload: payload)
     }

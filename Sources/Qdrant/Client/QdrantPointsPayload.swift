@@ -9,7 +9,7 @@ import Foundation
 
 public struct QdrantPointsPayload {
     
-    public let client: QTClient
+    public let client: QdrantClient
     public let collection: String
 
 }

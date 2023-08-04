@@ -8,7 +8,7 @@
 import Foundation
 import HTTPTypes
 
-public protocol QTClient {
+public protocol QdrantClient {
     var request: HTTPRequest { get }
     var encoder: JSONEncoder { get }
     var decoder: JSONDecoder { get }
@@ -17,14 +17,14 @@ public protocol QTClient {
     func upload(for request: HTTPRequest, from bodyData: Data) async throws -> QdrantResponse
 }
 
-public extension QTClient {
+public extension QdrantClient {
 
     var encoder: JSONEncoder { .init() }
     var decoder: JSONDecoder { .init() }
     
 }
 
-public extension QTClient {
+public extension QdrantClient {
     
     func add(queries: [(name: String, value: String)], to request: HTTPRequest) -> HTTPRequest {
         var request = request
